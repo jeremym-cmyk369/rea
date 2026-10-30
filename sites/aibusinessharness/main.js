@@ -50,18 +50,34 @@ window.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu();
 window.addEventListener('resize', () => { if (window.innerWidth > 860) closeMenu(); });
 
 const form = document.querySelector('#contact-form');
-form?.addEventListener('submit', (event) => {
+const formStatus = document.querySelector('#form-status');
+const started = document.querySelector('#contact-started');
+if (started) started.value = String(Date.now());
+form?.addEventListener('submit', async (event) => {
   event.preventDefault();
   if (!form.reportValidity()) return;
+  const button = form.querySelector('button[type="submit"]');
   const data = new FormData(form);
   const get = (name) => String(data.get(name) || '').trim();
-  const body = [
-    `Name: ${get('name')}`, `Work email: ${get('email')}`, `Company: ${get('company') || 'Not provided'}`, '',
-    'Repetitive task or workflow:', get('task'), '',
-    'Sent from the AI Business Harness website inquiry composer.'
-  ].join('\n');
-  const subject = `AI Business Harness inquiry — ${get('company') || get('name')}`;
-  const link = `mailto:jeremy@mandileseo.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-  document.querySelector('#form-status').textContent = 'Your email application should open with the inquiry ready. Review it and click Send to finish.';
-  window.location.href = link;
+  button.disabled = true;
+  formStatus.textContent = 'Sending your inquiry…';
+  try {
+    const res = await fetch(form.action, { method: 'POST', body: data, headers: { Accept: 'application/json' } });
+    const out = await res.json().catch(() => ({}));
+    if (!res.ok || !out.ok) throw new Error(out.message || 'Send failed');
+    form.reset();
+    if (started) started.value = String(Date.now());
+    formStatus.textContent = out.message;
+  } catch (err) {
+    const subject = `AI Business Harness inquiry — ${get('company') || get('name')}`;
+    const body = [`Name: ${get('name')}`, `Work email: ${get('email')}`, `Company: ${get('company') || 'Not provided'}`, '', 'Repetitive task or workflow:', get('task')].join('\n');
+    formStatus.innerHTML = '';
+    formStatus.append(`${err.message && err.message !== 'Send failed' ? err.message + ' ' : 'We couldn’t send that right now. '}`);
+    const link = document.createElement('a');
+    link.href = `mailto:jeremy@aibusinessharness.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    link.textContent = 'Email it to us instead';
+    formStatus.append(link, '.');
+  } finally {
+    button.disabled = false;
+  }
 });
