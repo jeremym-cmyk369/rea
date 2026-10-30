@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+<title id="title">AI business harness: the operational layer between models and business systems</title>
+<desc id="desc">An AI model supplies reasoning on the left. A central AI business harness controls tools, workflows, access permissions, human approvals, verification, audit records and costs. Approved actions reach email, CRM, files and databases on the right.</desc>
+<defs>
+<linearGradient id="bg" x2="1" y2="1"><stop stop-color="#08101b"/><stop offset="1" stop-color="#172a42"/></linearGradient>
+<linearGradient id="center" x2="1" y2="1"><stop stop-color="#254b74"/><stop offset="1" stop-color="#152b47"/></linearGradient>
+<linearGradient id="accent" x2="1"><stop stop-color="#79d8fa"/><stop offset="1" stop-color="#adbbff"/></linearGradient>
+<filter id="glow"><feGaussianBlur stdDeviation="22"/></filter>
+</defs>
+<rect width="1200" height="630" fill="url(#bg)"/>
+<circle cx="640" cy="310" r="290" fill="#4d92cc" opacity=".08" filter="url(#glow)"/>
+<g font-family="Arial, Helvetica, sans-serif">
+<text x="60" y="57" fill="#bad1e5" font-size="16" font-weight="700" letter-spacing="3">AI BUSINESS HARNESS  /  EXPLAINED</text>
+<text x="60" y="118" fill="#fff" font-size="38" font-weight="700">From reasoning to reliable action.</text>
+<text x="60" y="152" fill="#b4c7d9" font-size="17">A harness connects intelligence to approved work, with controls between.</text>
+<path d="M277 326H352 M835 326H923" stroke="#8ecdea" stroke-width="4" stroke-linecap="round"/>
+<path d="m337 314 18 12-18 12 m572-24 18 12-18 12" stroke="#8ecdea" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="55" y="235" width="235" height="203" rx="22" fill="#172638" stroke="#6384a5" stroke-width="1.5"/>
+<circle cx="104" cy="285" r="21" fill="#244b66" stroke="#81d6f6"/>
+<path d="M92 285h24 M104 273v24" stroke="#bcefff" stroke-width="2"/>
+<text x="79" y="340" fill="#fff" font-size="26" font-weight="700">AI MODEL</text>
+<text x="79" y="370" fill="#b9ccdd" font-size="17">Reasoning</text>
+<text x="79" y="396" fill="#b9ccdd" font-size="17">Decisions &amp; drafts</text>
+<rect x="352" y="192" width="490" height="300" rx="28" fill="url(#center)" stroke="#7fc9fa" stroke-width="2"/>
+<rect x="370" y="208" width="454" height="46" rx="13" fill="#0c2339"/>
+<text x="597" y="238" text-anchor="middle" fill="#fff" font-size="24" font-weight="700" letter-spacing=".5">AI BUSINESS HARNESS</text>
+<g fill="#12283e" stroke="#5e84a8" stroke-width="1">
+<rect x="380" y="274" width="205" height="62" rx="12"/>
+<rect x="606" y="274" width="205" height="62" rx="12"/>
+<rect x="380" y="347" width="205" height="62" rx="12"/>
+<rect x="606" y="347" width="205" height="62" rx="12"/>
+</g>
+<g fill="#eef7ff" font-size="17" font-weight="700"><text x="400" y="301">PERMISSIONS</text><text x="625" y="301">WORKFLOW</text><text x="400" y="374">HUMAN APPROVAL</text><text x="625" y="374">VALIDATION</text></g>
+<g fill="#aac5dc" font-size="14"><text x="400" y="322">Scoped access</text><text x="625" y="322">Steps &amp; routing</text><text x="400" y="395">High-risk action gate</text><text x="625" y="395">Verify the outcome</text></g>
+<rect x="381" y="423" width="430" height="47" rx="11" fill="#0b1d30" stroke="#4b6d91"/>
+<text x="596" y="453" text-anchor="middle" fill="#c7e5f6" font-size="16" font-weight="700">AUDIT TRAIL  ·  COST CONTROLS</text>
+<rect x="923" y="235" width="225" height="203" rx="22" fill="#172638" stroke="#6384a5" stroke-width="1.5"/>
+<text x="943" y="278" fill="#fff" font-size="23" font-weight="700">BUSINESS</text>
+<text x="943" y="305" fill="#fff" font-size="23" font-weight="700">SYSTEMS</text>
+<g fill="#b9ccdd" font-size="17"><text x="944" y="345">Email &amp; CRM</text><text x="944" y="373">Files &amp; databases</text><text x="944" y="401">Approved APIs</text></g>
+<path d="M596 492V533" stroke="url(#accent)" stroke-width="3" stroke-dasharray="5 7"/>
+<circle cx="596" cy="546" r="10" fill="#65d8c6"/>
+<text x="617" y="552" fill="#d6e8f5" font-size="17">Actions proceed only within agreed controls</text>
+<text x="60" y="596" fill="#7fa5c2" font-size="14">Illustrative reference architecture  •  aibusinessharness.com</text>
+</g>
+</svg>
