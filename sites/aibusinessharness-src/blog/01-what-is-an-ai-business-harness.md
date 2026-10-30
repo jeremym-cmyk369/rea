@@ -15,6 +15,8 @@ Which customer? Has anyone already called them? Is the estimate still open? Who'
 
 That gap between "AI that can write" and "AI that can help get work done" is what an **AI business harness** fills.
 
+<div class="hub-callout"><p>Explore the complete guide to controlled AI workflows, business harness components, and practical use cases.</p><a href="/ai-business-harness/">Read the AI business harness guide →</a></div>
+
 ## The short definition
 
 An AI business harness is the operating layer around an AI model. It connects the model to the business tools it's allowed to use, walks it through a defined sequence of steps, stops for a person when a decision matters, checks whether each step actually worked, and keeps a record of everything that happened.

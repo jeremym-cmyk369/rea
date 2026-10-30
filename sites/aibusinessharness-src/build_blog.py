@@ -24,7 +24,7 @@ SITE = ROOT.parent / "aibusinessharness"
 OUT = SITE / "blog"
 IMG = OUT / "images"
 BASE = "https://aibusinessharness.com"
-ASSET_V = "20261029g"
+ASSET_V = "20261030h"
 PUBLISHED = "2026-10-29"
 AUTHOR = "Jeremy Mandile"
 
@@ -69,7 +69,7 @@ def header() -> str:
   </header>'''
 
 
-FOOTER = '''<footer class="site-footer"><div class="container footer-top"><a class="brand brand-dark" href="/" aria-label="AI Business Harness homepage"><span class="brand-mark"><i></i><i></i><i></i></span><span class="brand-text">AI BUSINESS <strong>HARNESS</strong></span></a><p>Make room for better work.</p><a href="mailto:jeremy@aibusinessharness.com">Get in touch ↗</a></div><div class="container footer-bottom"><span>© <span id="year">2026</span> AI Business Harness · A Mandile SEO service</span><div><a href="/blog/">Blog</a><a href="/privacy.html">Privacy</a><a href="https://mandileseo.com" target="_blank" rel="noopener noreferrer">Mandile SEO ↗</a></div></div></footer>'''
+FOOTER = '''<footer class="site-footer"><div class="container footer-top"><a class="brand brand-dark" href="/" aria-label="AI Business Harness homepage"><span class="brand-mark"><i></i><i></i><i></i></span><span class="brand-text">AI BUSINESS <strong>HARNESS</strong></span></a><p>Make room for better work.</p><a href="mailto:jeremy@aibusinessharness.com">Get in touch ↗</a></div><div class="container footer-bottom"><span>© <span id="year">2026</span> AI Business Harness · A Mandile SEO service</span><div><a href="/ai-business-harness/">AI Harness Guide</a><a href="/blog/">Blog</a><a href="/privacy.html">Privacy</a><a href="https://mandileseo.com" target="_blank" rel="noopener noreferrer">Mandile SEO ↗</a></div></div></footer>'''
 
 
 def head(title, desc, canonical, image, og_type, jsonld) -> str:
@@ -185,6 +185,7 @@ def index_page(posts: list[dict]) -> str:
       <h1>Practical AI for<br /><span>real business work.</span></h1>
       <p>Plain-English guides for owners and operators: what to automate first, where people stay in control, and how to tell whether it's working.</p>
     </section>
+    <section class="container" aria-label="Complete guide"><div class="hub-callout"><p>New: the complete guide to AI business harnesses — components, use cases and a 30-day pilot.</p><a class="text-link" href="/ai-business-harness/">Read the guide <span aria-hidden="true">→</span></a></div></section>
     <section class="container featured" aria-label="Featured article">{card(feature, "h2").replace('class="post-card"', 'class="post-card post-card-featured"', 1)}</section>
     <section class="container" aria-label="All articles"><div class="post-grid">{grid}</div></section>
   </main>
@@ -204,7 +205,7 @@ def feed(posts: list[dict]) -> str:
 
 
 def sitemap(posts: list[dict]) -> str:
-    urls = [("/", "1.0"), ("/blog/", "0.8")] + [(p["url"], "0.7") for p in posts] + [("/privacy.html", "0.3")]
+    urls = [("/", "1.0"), ("/ai-business-harness/", "0.9"), ("/blog/", "0.8")] + [(p["url"], "0.7") for p in posts] + [("/privacy.html", "0.3")]
     body = "".join(f"<url><loc>{BASE}{u}</loc><lastmod>{PUBLISHED}</lastmod><priority>{pr}</priority></url>" for u, pr in urls)
     return f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{body}</urlset>\n'
 
@@ -238,7 +239,7 @@ def main() -> None:
               '<div class="section-heading"><div><p class="eyebrow">INSIGHTS</p><h2 id="teaser-title">Practical AI,<br />explained plainly.</h2></div>'
               '<p>Guides for owners and operators on choosing workflows, keeping people in control, and measuring what works.</p></div>'
               f'<div class="post-grid">{"".join(card(p) for p in picks)}</div>'
-              '<div class="blog-teaser-foot"><a class="text-link" href="/blog/">See all articles <span aria-hidden="true">→</span></a></div>'
+              '<div class="blog-teaser-foot"><a class="text-link" href="/ai-business-harness/">Read the complete AI business harness guide <span aria-hidden="true">→</span></a> <a class="text-link" href="/blog/">See all articles <span aria-hidden="true">→</span></a></div>'
               '</div></section><!-- blog-teaser:end -->')
     h = home.read_text(encoding="utf-8")
     h = re.sub(r"<!-- blog-teaser:start -->.*?<!-- blog-teaser:end -->", lambda _: teaser, h, flags=re.S)
