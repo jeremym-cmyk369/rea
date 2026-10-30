@@ -22,7 +22,7 @@ OUT = SITE / "ai-business-harness" / "index.html"
 IMG = "/blog/images"
 PUBLISHED = "2026-10-30"
 MODIFIED = "2026-10-30"
-ASSET_V = "20261030h"
+ASSET_V = "20261030i"
 
 SEO_TITLE = "AI Business Harness: Controlled AI Workflows for Business"
 META_DESC = ("Learn what an AI business harness is, how it differs from an AI agent, and how controlled AI "
