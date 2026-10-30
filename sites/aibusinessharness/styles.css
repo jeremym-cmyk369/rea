@@ -126,3 +126,9 @@
 .price-note{margin:26px 0 0;font-size:13px;line-height:1.7;color:#68727e;max-width:760px}
 @media(max-width:860px){.price-grid{grid-template-columns:1fr}}
 @media(max-width:620px){.price-card{padding:30px 22px}.price-badge{position:static;align-self:flex-start;margin-bottom:16px}}
+
+/* Article diagram caption and responsive layout */
+.post-hero figcaption{font-size:13px;line-height:1.65;color:#66717f;max-width:980px;padding:12px 1px 0}
+.post-body h2[id]{scroll-margin-top:112px}
+.post-body h3{scroll-margin-top:112px}
+@media(max-width:620px){.post-hero figcaption{font-size:12px;padding-top:9px}}
