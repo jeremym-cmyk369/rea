@@ -28,7 +28,7 @@ ASSET_V = "20261029f"
 PUBLISHED = "2026-10-29"
 AUTHOR = "Jeremy Mandile"
 
-NAV = [("/#solutions", "Solutions"), ("/#approach", "How it works"), ("/blog/", "Insights"), ("/#pilot", "Our pilot")]
+NAV = [("/#solutions", "Solutions"), ("/#approach", "How it works"), ("/blog/", "Blog"), ("/#pilot", "Our pilot")]
 
 
 def parse(path: pathlib.Path) -> dict:
@@ -69,7 +69,7 @@ def header() -> str:
   </header>'''
 
 
-FOOTER = '''<footer class="site-footer"><div class="container footer-top"><a class="brand brand-dark" href="/" aria-label="AI Business Harness homepage"><span class="brand-mark"><i></i><i></i><i></i></span><span class="brand-text">AI BUSINESS <strong>HARNESS</strong></span></a><p>Make room for better work.</p><a href="mailto:jeremy@aibusinessharness.com">Get in touch ↗</a></div><div class="container footer-bottom"><span>© <span id="year">2026</span> AI Business Harness · A Mandile SEO service</span><div><a href="/blog/">Insights</a><a href="/privacy.html">Privacy</a><a href="https://mandileseo.com" target="_blank" rel="noopener noreferrer">Mandile SEO ↗</a></div></div></footer>'''
+FOOTER = '''<footer class="site-footer"><div class="container footer-top"><a class="brand brand-dark" href="/" aria-label="AI Business Harness homepage"><span class="brand-mark"><i></i><i></i><i></i></span><span class="brand-text">AI BUSINESS <strong>HARNESS</strong></span></a><p>Make room for better work.</p><a href="mailto:jeremy@aibusinessharness.com">Get in touch ↗</a></div><div class="container footer-bottom"><span>© <span id="year">2026</span> AI Business Harness · A Mandile SEO service</span><div><a href="/blog/">Blog</a><a href="/privacy.html">Privacy</a><a href="https://mandileseo.com" target="_blank" rel="noopener noreferrer">Mandile SEO ↗</a></div></div></footer>'''
 
 
 def head(title, desc, canonical, image, og_type, jsonld) -> str:
@@ -131,7 +131,7 @@ def post_page(p: dict, all_posts: list[dict]) -> str:
              "keywords": p["keyword"], "articleSection": p["category"], "inLanguage": "en-US"},
             {"@type": "BreadcrumbList", "itemListElement": [
                 {"@type": "ListItem", "position": 1, "name": "Home", "item": BASE + "/"},
-                {"@type": "ListItem", "position": 2, "name": "Insights", "item": BASE + "/blog/"},
+                {"@type": "ListItem", "position": 2, "name": "Blog", "item": BASE + "/blog/"},
                 {"@type": "ListItem", "position": 3, "name": p["title"], "item": canonical}]},
         ],
     }
@@ -143,7 +143,7 @@ def post_page(p: dict, all_posts: list[dict]) -> str:
   <main id="main">
     <article class="post">
       <header class="post-head container">
-        <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><a href="/blog/">Insights</a><span aria-hidden="true">/</span><span aria-current="page">{esc(p["category"])}</span></nav>
+        <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><a href="/blog/">Blog</a><span aria-hidden="true">/</span><span aria-current="page">{esc(p["category"])}</span></nav>
         <p class="eyebrow">{esc(p["category"])}</p>
         <h1>{esc(p["title"])}</h1>
         <p class="post-dek">{esc(p["excerpt"])}</p>
