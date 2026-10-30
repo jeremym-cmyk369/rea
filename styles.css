@@ -21,3 +21,21 @@
 /* "Make your business ready for practical AI" statement */
 .ready-section{border-bottom:1px solid #e2e5e8}
 .ready-link{margin-top:34px;color:var(--ink)}
+
+/* "What is an AI Business Harness?" section */
+.harness-section{background:#fff;border-bottom:1px solid #e2e5e8}
+.harness-layout{display:grid;grid-template-columns:1.05fr .95fr;gap:80px;align-items:center}
+.harness-copy h2{font-size:clamp(46px,5.4vw,76px);font-weight:580;letter-spacing:-.072em;line-height:1.055;margin:0 0 30px}
+.harness-copy h2 span{color:#8a939f}
+.harness-copy>p:not(.eyebrow){color:#5c6570;font-size:16px;line-height:1.78;max-width:560px;margin:0 0 16px}
+.harness-copy .harness-tagline{color:var(--ink);font-size:clamp(19px,1.8vw,23px);font-weight:620;letter-spacing:-.03em;line-height:1.4;margin-top:30px;padding-top:26px;border-top:1px solid #dde1e6}
+.harness-tagline span{color:#4868ac}
+.harness-flow{margin:0;background:#f3f4f6;border:1px solid #e2e5e8;padding:34px 34px 30px}
+.harness-flow figcaption{font-size:10px;letter-spacing:.14em;font-weight:750;color:#637081;margin-bottom:22px}
+.harness-flow ol{list-style:none;margin:0;padding:0;position:relative}
+.harness-flow ol:before{content:"";position:absolute;left:21px;top:22px;bottom:22px;width:1px;background:#bfcadb}
+.harness-flow li{display:flex;align-items:center;gap:18px;padding:9px 0;font-size:15px;font-weight:600;color:#2a313b;position:relative}
+.harness-flow li span{flex:none;width:43px;height:43px;border-radius:50%;display:grid;place-items:center;background:#fff;border:1px solid #c7d3e6;color:#607495;font-size:11px;font-weight:750;box-shadow:0 8px 18px #25314c12}
+.harness-flow li:nth-child(5) span{background:#e9f0fc;border-color:#9fb6dc;color:#334d78}
+@media(max-width:860px){.harness-layout{grid-template-columns:1fr;gap:44px}.harness-flow{max-width:560px}}
+@media(max-width:620px){.harness-copy h2{font-size:clamp(40px,10vw,57px)}.harness-copy>p:not(.eyebrow){font-size:15px}.harness-flow{padding:24px 20px}.harness-flow li{font-size:14px;gap:14px}}
