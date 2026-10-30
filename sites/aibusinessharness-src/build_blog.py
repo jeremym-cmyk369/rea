@@ -24,7 +24,7 @@ SITE = ROOT.parent / "aibusinessharness"
 OUT = SITE / "blog"
 IMG = OUT / "images"
 BASE = "https://aibusinessharness.com"
-ASSET_V = "20261029e"
+ASSET_V = "20261029f"
 PUBLISHED = "2026-10-29"
 AUTHOR = "Jeremy Mandile"
 

@@ -97,3 +97,9 @@
 .blog-teaser-foot{margin-top:34px}
 @media(max-width:860px){.post-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.post-card-featured .post-card-link{grid-template-columns:1fr}.post-card-featured .post-card-body{padding:30px}.post-cta{flex-direction:column;align-items:flex-start;padding:40px}}
 @media(max-width:620px){.post-grid{grid-template-columns:1fr;padding-bottom:80px}.blog-hero{padding-block:70px 36px}.post-head{padding-block:44px 28px}.post-body{font-size:16px}.post-hero{margin-bottom:36px}.post-cta{padding:30px 24px}.related{padding-top:70px}}
+
+/* "Make the decision measurable" section */
+.value-section{background:#f3f4f6;border-top:1px solid #e2e5e8}
+.value-section .harness-flow{background:#fff}
+.value-section .harness-flow li:nth-child(5) span{background:#fff;border-color:#c7d3e6;color:#607495}
+.value-section .harness-flow li:nth-child(6) span{background:#e9f0fc;border-color:#9fb6dc;color:#334d78}
