@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+<title id="title">Controlled AI workflow from intake to reconciliation</title>
+<desc id="desc">Five stages run left to right: intake, validation against business rules, human approval bound to the exact action, external action with duplicate protection, and verification with reconciliation of uncertain outcomes. Exceptions at any stage are routed to a person, and every stage writes to an audit log.</desc>
+<defs>
+<linearGradient id="bg" x2="1" y2="1"><stop stop-color="#08101b"/><stop offset="1" stop-color="#172a42"/></linearGradient>
+<linearGradient id="accent" x2="1"><stop stop-color="#79d8fa"/><stop offset="1" stop-color="#adbbff"/></linearGradient>
+<marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10z" fill="#79d8fa"/></marker>
+</defs>
+<rect width="1200" height="630" fill="url(#bg)"/>
+<g font-family="Arial, Helvetica, sans-serif">
+<text x="60" y="57" fill="#bad1e5" font-size="16" font-weight="700" letter-spacing="3">A CONTROLLED AI WORKFLOW</text>
+<text x="60" y="112" fill="#fff" font-size="36" font-weight="700">Every step is checked before anything leaves.</text>
+<g font-size="15">
+<rect x="60" y="200" width="190" height="170" rx="12" fill="#0f1a29" stroke="#2c3f57"/>
+<text x="80" y="235" fill="#79d8fa" font-size="13" font-weight="700" letter-spacing="2">01</text>
+<text x="80" y="268" fill="#fff" font-size="21" font-weight="700">Intake</text>
+<text x="80" y="300" fill="#b4c7d9">Inquiry, estimate</text>
+<text x="80" y="322" fill="#b4c7d9">or request arrives</text>
+<rect x="282" y="200" width="190" height="170" rx="12" fill="#0f1a29" stroke="#2c3f57"/>
+<text x="302" y="235" fill="#79d8fa" font-size="13" font-weight="700" letter-spacing="2">02</text>
+<text x="302" y="268" fill="#fff" font-size="21" font-weight="700">Validate</text>
+<text x="302" y="300" fill="#b4c7d9">Current records,</text>
+<text x="302" y="322" fill="#b4c7d9">business rules</text>
+<rect x="504" y="200" width="190" height="170" rx="12" fill="#1c3756" stroke="url(#accent)" stroke-width="2"/>
+<text x="524" y="235" fill="#adbbff" font-size="13" font-weight="700" letter-spacing="2">03</text>
+<text x="524" y="268" fill="#fff" font-size="19" font-weight="700">Human approval</text>
+<text x="524" y="300" fill="#d5e2ef">Bound to the</text>
+<text x="524" y="322" fill="#d5e2ef">exact action</text>
+<rect x="726" y="200" width="190" height="170" rx="12" fill="#0f1a29" stroke="#2c3f57"/>
+<text x="746" y="235" fill="#79d8fa" font-size="13" font-weight="700" letter-spacing="2">04</text>
+<text x="746" y="268" fill="#fff" font-size="19" font-weight="700">External action</text>
+<text x="746" y="300" fill="#b4c7d9">Rechecked, with</text>
+<text x="746" y="322" fill="#b4c7d9">duplicate protection</text>
+<rect x="948" y="200" width="192" height="170" rx="12" fill="#0f1a29" stroke="#2c3f57"/>
+<text x="968" y="235" fill="#79d8fa" font-size="13" font-weight="700" letter-spacing="2">05</text>
+<text x="968" y="268" fill="#fff" font-size="21" font-weight="700">Verify</text>
+<text x="968" y="300" fill="#b4c7d9">Reconcile uncertain</text>
+<text x="968" y="322" fill="#b4c7d9">outcomes</text>
+</g>
+<g stroke="#79d8fa" stroke-width="2" marker-end="url(#ar)">
+<line x1="252" y1="285" x2="278" y2="285"/><line x1="474" y1="285" x2="500" y2="285"/><line x1="696" y1="285" x2="722" y2="285"/><line x1="918" y1="285" x2="944" y2="285"/>
+</g>
+<path d="M155 372V420H1044V372" fill="none" stroke="#5d7491" stroke-dasharray="5 6"/>
+<rect x="430" y="402" width="340" height="38" rx="19" fill="#132235" stroke="#5d7491"/>
+<text x="600" y="427" fill="#d5e2ef" font-size="15" text-anchor="middle">Exceptions → routed to a person</text>
+<rect x="60" y="480" width="1080" height="56" rx="10" fill="#0c1522" stroke="#2c3f57"/>
+<text x="84" y="514" fill="#8fa5bd" font-size="13" font-weight="700" letter-spacing="2">AUDIT LOG</text>
+<text x="215" y="514" fill="#b4c7d9" font-size="15">trigger · records used · decision · approver · action attempted · verified result</text>
+<text x="60" y="590" fill="#7f95ad" font-size="14">Illustrative. Actual controls depend on each business's systems, permissions and tested integrations.</text>
+</g>
+</svg>
