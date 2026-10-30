@@ -17,3 +17,7 @@
 /* Contact form honeypot — hidden from people, visible to bots */
 .hp-field { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
 #form-status a { color: inherit; text-decoration: underline; }
+
+/* "Make your business ready for practical AI" statement */
+.ready-section{border-bottom:1px solid #e2e5e8}
+.ready-link{margin-top:34px;color:var(--ink)}
