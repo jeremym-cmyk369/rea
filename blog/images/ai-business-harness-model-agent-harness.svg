@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+<title id="title">AI model vs. AI agent vs. AI business harness</title>
+<desc id="desc">Three columns compare responsibilities. The AI model interprets information and drafts a follow-up. The AI agent chooses steps and uses tools, checking the estimate and preparing the next action. The AI business harness coordinates execution and enforces controls: it checks access, obtains approval, protects against duplicate sends and records outcomes.</desc>
+<defs>
+<linearGradient id="bg" x2="1" y2="1"><stop stop-color="#08101b"/><stop offset="1" stop-color="#172a42"/></linearGradient>
+<linearGradient id="hl" x2="1" y2="1"><stop stop-color="#254b74"/><stop offset="1" stop-color="#152b47"/></linearGradient>
+<linearGradient id="accent" x2="1"><stop stop-color="#79d8fa"/><stop offset="1" stop-color="#adbbff"/></linearGradient>
+</defs>
+<rect width="1200" height="630" fill="url(#bg)"/>
+<g font-family="Arial, Helvetica, sans-serif">
+<text x="60" y="57" fill="#bad1e5" font-size="16" font-weight="700" letter-spacing="3">THREE LAYERS  /  ONE ESTIMATE FOLLOW-UP</text>
+<text x="60" y="112" fill="#fff" font-size="36" font-weight="700">A model generates. An agent chooses steps.</text>
+<text x="60" y="150" fill="#b4c7d9" font-size="19">The harness governs how the work runs.</text>
+<g>
+<rect x="60" y="195" width="340" height="370" rx="14" fill="#0f1a29" stroke="#2c3f57"/>
+<text x="90" y="240" fill="#79d8fa" font-size="14" font-weight="700" letter-spacing="2">01  AI MODEL</text>
+<text x="90" y="285" fill="#fff" font-size="23" font-weight="700">Interprets and</text>
+<text x="90" y="315" fill="#fff" font-size="23" font-weight="700">generates outputs</text>
+<line x1="90" y1="345" x2="370" y2="345" stroke="#2c3f57"/>
+<text x="90" y="380" fill="#8fa5bd" font-size="13" font-weight="700" letter-spacing="1.5">IN THE EXAMPLE</text>
+<text x="90" y="412" fill="#d5e2ef" font-size="17">Drafts a follow-up</text>
+<text x="90" y="436" fill="#d5e2ef" font-size="17">message.</text>
+</g>
+<g>
+<rect x="430" y="195" width="340" height="370" rx="14" fill="#0f1a29" stroke="#2c3f57"/>
+<text x="460" y="240" fill="#79d8fa" font-size="14" font-weight="700" letter-spacing="2">02  AI AGENT</text>
+<text x="460" y="285" fill="#fff" font-size="23" font-weight="700">Chooses steps and</text>
+<text x="460" y="315" fill="#fff" font-size="23" font-weight="700">uses tools toward a goal</text>
+<line x1="460" y1="345" x2="740" y2="345" stroke="#2c3f57"/>
+<text x="460" y="380" fill="#8fa5bd" font-size="13" font-weight="700" letter-spacing="1.5">IN THE EXAMPLE</text>
+<text x="460" y="412" fill="#d5e2ef" font-size="17">Checks the estimate and</text>
+<text x="460" y="436" fill="#d5e2ef" font-size="17">prepares the next action.</text>
+</g>
+<g>
+<rect x="800" y="195" width="340" height="370" rx="14" fill="url(#hl)" stroke="url(#accent)" stroke-width="2"/>
+<text x="830" y="240" fill="#adbbff" font-size="14" font-weight="700" letter-spacing="2">03  AI BUSINESS HARNESS</text>
+<text x="830" y="285" fill="#fff" font-size="23" font-weight="700">Coordinates execution,</text>
+<text x="830" y="315" fill="#fff" font-size="23" font-weight="700">enforces controls</text>
+<line x1="830" y1="345" x2="1110" y2="345" stroke="#3d5d82"/>
+<text x="830" y="380" fill="#b5c9de" font-size="13" font-weight="700" letter-spacing="1.5">IN THE EXAMPLE</text>
+<circle cx="836" cy="406" r="5" fill="#79d8fa"/><text x="850" y="412" fill="#fff" font-size="17">Checks access</text>
+<circle cx="836" cy="435" r="5" fill="#79d8fa"/><text x="850" y="441" fill="#fff" font-size="17">Obtains approval</text>
+<circle cx="836" cy="464" r="5" fill="#79d8fa"/><text x="850" y="470" fill="#fff" font-size="17">Blocks duplicate sends</text>
+<circle cx="836" cy="493" r="5" fill="#79d8fa"/><text x="850" y="499" fill="#fff" font-size="17">Records the outcome</text>
+</g>
+<text x="60" y="603" fill="#7f95ad" font-size="14">These responsibilities may be built into the same system. The distinction is about responsibility, not separate products.</text>
+</g>
+</svg>
