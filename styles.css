@@ -132,3 +132,8 @@
 .post-body h2[id]{scroll-margin-top:112px}
 .post-body h3{scroll-margin-top:112px}
 @media(max-width:620px){.post-hero figcaption{font-size:12px;padding-top:9px}}
+.post-figure{margin:34px 0 36px}.post-figure img{display:block;width:100%;height:auto;border-radius:10px;background:#08101b}.post-figure figcaption{font-size:13px;line-height:1.65;color:#66717f;padding:12px 1px 0}
+.hub-toc{background:#f3f5f8;border:1px solid #e2e6eb;border-radius:10px;padding:22px 26px 14px;margin:0 0 40px}.hub-toc .eyebrow{margin:0 0 12px}.hub-toc ol{margin:0;padding-left:20px;columns:2;column-gap:36px;font-size:15px}.hub-toc li{margin-bottom:8px;break-inside:avoid}.hub-toc a{text-decoration:none}.hub-toc a:hover{text-decoration:underline}
+@media(max-width:620px){.hub-toc ol{columns:1}}
+.hub-callout{display:flex;gap:16px;align-items:center;justify-content:space-between;background:#eef2f8;border:1px solid #d9e1ec;border-radius:10px;padding:18px 22px;margin:28px 0}.hub-callout p{margin:0!important;font-weight:600;color:var(--ink)}.hub-callout a{white-space:nowrap}
+.blog-teaser-foot{display:flex;flex-wrap:wrap;gap:14px 30px}
