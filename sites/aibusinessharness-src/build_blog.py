@@ -17,14 +17,14 @@ import re
 
 import markdown
 
-from images import svg_for
+from images import INLINE, svg_for
 
 ROOT = pathlib.Path(__file__).resolve().parent
 SITE = ROOT.parent / "aibusinessharness"
 OUT = SITE / "blog"
 IMG = OUT / "images"
 BASE = "https://aibusinessharness.com"
-ASSET_V = "20261030h"
+ASSET_V = "20261030i"
 PUBLISHED = "2026-10-29"
 AUTHOR = "Jeremy Mandile"
 
@@ -42,7 +42,18 @@ def parse(path: pathlib.Path) -> dict:
     words = len(re.findall(r"\w+", body))
     meta.update(body=body, minutes=max(3, math.ceil(words / 230)), order=int(path.name[:2]))
     meta["url"] = f"/blog/{meta['slug']}/"
+    meta.setdefault("date", PUBLISHED)
+    meta["faq"] = faq_items(body)
     return meta
+
+
+def faq_items(body: str) -> list[tuple[str, str]]:
+    """Question/answer pairs under a '## Frequently asked questions' heading."""
+    m = re.search(r"^## Frequently asked questions\n(.*?)(?=^## |^Sources:|\Z)", body, re.S | re.M)
+    if not m:
+        return []
+    pairs = re.findall(r"^### (.+?)\n+(.+?)(?=\n### |\Z)", m.group(1).strip() + "\n", re.S | re.M)
+    return [(q.strip(), re.sub(r"\s+", " ", re.sub(r"\[([^\]]+)\]\([^)]+\)", r"\1", a)).strip()) for q, a in pairs]
 
 
 def esc(s: str) -> str:
@@ -54,6 +65,8 @@ def render_body(md: str) -> str:
     # External links open in a new tab; internal links stay put.
     out = re.sub(r'<a href="(https?://(?!aibusinessharness\.com)[^"]+)">',
                  r'<a href="\1" target="_blank" rel="noopener">', out)
+    out = re.sub(r'<p><img alt="([^"]*)" src="([^"]+)" ?/?></p>',
+                 r'<figure class="post-figure"><img src="\2" alt="\1" width="1200" height="630" loading="lazy" decoding="async" /></figure>', out)
     out = out.replace("<table>", '<div class="table-wrap"><table>').replace("</table>", "</table></div>")
     return out
 
@@ -123,7 +136,7 @@ def post_page(p: dict, all_posts: list[dict]) -> str:
         "@context": "https://schema.org",
         "@graph": [
             {"@type": "BlogPosting", "headline": p["title"], "description": p["description"],
-             "image": [image], "datePublished": PUBLISHED, "dateModified": PUBLISHED,
+             "image": [image], "datePublished": p["date"], "dateModified": p["date"],
              "author": {"@type": "Person", "name": AUTHOR, "url": BASE + "/"},
              "publisher": {"@type": "Organization", "name": "AI Business Harness", "url": BASE + "/",
                            "parentOrganization": {"@type": "Organization", "name": "Mandile SEO", "url": "https://mandileseo.com"}},
@@ -135,6 +148,9 @@ def post_page(p: dict, all_posts: list[dict]) -> str:
                 {"@type": "ListItem", "position": 3, "name": p["title"], "item": canonical}]},
         ],
     }
+    if p["faq"]:
+        jsonld["@graph"].append({"@type": "FAQPage", "mainEntity": [
+            {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in p["faq"]]})
     rel = "".join(card(q) for q in related)
     return f'''{head(p["meta_title"] + " | AI Business Harness", p["description"], canonical, image, "article", jsonld)}
 <body class="blog-page">
@@ -147,7 +163,7 @@ def post_page(p: dict, all_posts: list[dict]) -> str:
         <p class="eyebrow">{esc(p["category"])}</p>
         <h1>{esc(p["title"])}</h1>
         <p class="post-dek">{esc(p["excerpt"])}</p>
-        <p class="post-meta">By {AUTHOR} · <time datetime="{PUBLISHED}">{nice_date(PUBLISHED)}</time> · {p["minutes"]} min read</p>
+        <p class="post-meta">By {AUTHOR} · <time datetime="{p["date"]}">{nice_date(p["date"])}</time> · {p["minutes"]} min read</p>
       </header>
       <figure class="post-hero container"><img src="/blog/images/{p["slug"]}.svg" alt="{esc(p["image_alt"])}" width="1200" height="630" fetchpriority="high" /></figure>
       <div class="post-body container">
@@ -172,7 +188,7 @@ def index_page(posts: list[dict]) -> str:
     desc = "Practical, plain-English guides to using AI in a small business: choosing workflows, human approval, integrations, audit trails and 30-day pilots."
     jsonld = {"@context": "https://schema.org", "@type": "Blog", "name": "AI Business Harness Insights", "url": canonical,
               "description": desc, "publisher": {"@type": "Organization", "name": "AI Business Harness", "url": BASE + "/"},
-              "blogPost": [{"@type": "BlogPosting", "headline": p["title"], "url": BASE + p["url"], "datePublished": PUBLISHED} for p in posts]}
+              "blogPost": [{"@type": "BlogPosting", "headline": p["title"], "url": BASE + p["url"], "datePublished": p["date"]} for p in posts]}
     feature, rest = posts[0], posts[1:]
     grid = "".join(card(p, "h2") for p in rest)
     return f'''{head("AI for Small Business: Practical Guides | AI Business Harness", desc, canonical, image, "website", jsonld)}
@@ -196,17 +212,20 @@ def index_page(posts: list[dict]) -> str:
 
 
 def feed(posts: list[dict]) -> str:
-    pub = dt.datetime.fromisoformat(PUBLISHED + "T09:00:00-07:00").strftime("%a, %d %b %Y %H:%M:%S %z")
+    def pub(d: str) -> str:
+        return dt.datetime.fromisoformat(d + "T09:00:00-07:00").strftime("%a, %d %b %Y %H:%M:%S %z")
     items = "".join(
         f"<item><title>{esc(p['title'])}</title><link>{BASE}{p['url']}</link><guid>{BASE}{p['url']}</guid>"
-        f"<pubDate>{pub}</pubDate><description>{esc(p['description'])}</description></item>" for p in posts)
+        f"<pubDate>{pub(p['date'])}</pubDate><description>{esc(p['description'])}</description></item>" for p in posts)
     return (f'<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0"><channel><title>AI Business Harness Insights</title>'
             f"<link>{BASE}/blog/</link><description>Practical AI guides for small businesses.</description>{items}</channel></rss>\n")
 
 
 def sitemap(posts: list[dict]) -> str:
-    urls = [("/", "1.0"), ("/ai-business-harness/", "0.9"), ("/blog/", "0.8")] + [(p["url"], "0.7") for p in posts] + [("/privacy.html", "0.3")]
-    body = "".join(f"<url><loc>{BASE}{u}</loc><lastmod>{PUBLISHED}</lastmod><priority>{pr}</priority></url>" for u, pr in urls)
+    latest = max(p["date"] for p in posts)
+    urls = ([("/", "1.0", latest), ("/ai-business-harness/", "0.9", PUBLISHED), ("/blog/", "0.8", latest)]
+            + [(p["url"], "0.7", p["date"]) for p in posts] + [("/privacy.html", "0.3", PUBLISHED)])
+    body = "".join(f"<url><loc>{BASE}{u}</loc><lastmod>{lm}</lastmod><priority>{pr}</priority></url>" for u, pr, lm in urls)
     return f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{body}</urlset>\n'
 
 
@@ -229,12 +248,17 @@ def main() -> None:
         d = OUT / p["slug"]
         d.mkdir(parents=True, exist_ok=True)
         (d / "index.html").write_text(post_page(p, posts), encoding="utf-8")
+    for name in INLINE:
+        (IMG / f"{name}.svg").write_text(svg_for(name), encoding="utf-8")
     render_pngs([p["slug"] for p in posts])
-    (OUT / "index.html").write_text(index_page(posts), encoding="utf-8")
-    (OUT / "feed.xml").write_text(feed(posts), encoding="utf-8")
+    newest = sorted(posts, key=lambda p: (p["date"], p["order"]), reverse=True)
+    newest = [newest[0]] + sorted(newest[1:], key=lambda p: p["order"])
+    (OUT / "index.html").write_text(index_page(newest), encoding="utf-8")
+    (OUT / "feed.xml").write_text(feed(newest), encoding="utf-8")
     (SITE / "sitemap.xml").write_text(sitemap(posts), encoding="utf-8")
     home = SITE / "index.html"
-    picks = [p for p in posts if p["order"] in (1, 5, 6)]
+    picks = [p for p in posts if p["order"] in (11, 1, 6)]
+    picks.sort(key=lambda p: (p["order"] != 11, p["order"]))
     teaser = ('<!-- blog-teaser:start --><section class="blog-teaser section-pad" aria-labelledby="teaser-title"><div class="container">'
               '<div class="section-heading"><div><p class="eyebrow">INSIGHTS</p><h2 id="teaser-title">Practical AI,<br />explained plainly.</h2></div>'
               '<p>Guides for owners and operators on choosing workflows, keeping people in control, and measuring what works.</p></div>'
