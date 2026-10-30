@@ -103,3 +103,26 @@
 .value-section .harness-flow{background:#fff}
 .value-section .harness-flow li:nth-child(5) span{background:#fff;border-color:#c7d3e6;color:#607495}
 .value-section .harness-flow li:nth-child(6) span{background:#e9f0fc;border-color:#9fb6dc;color:#334d78}
+
+/* Pricing */
+.pricing-section{background:#fff;border-top:1px solid #e2e5e8}
+.price-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+.price-card{position:relative;display:flex;flex-direction:column;border:1px solid #dfe3e8;background:#fbfbfc;padding:40px 38px 38px}
+.price-card h3{font-size:clamp(22px,2.1vw,28px);letter-spacing:-.04em;font-weight:620;margin:0 0 18px}
+.price{display:flex;align-items:baseline;gap:10px;margin:0 0 14px}
+.price strong{font-size:clamp(44px,4.6vw,62px);letter-spacing:-.06em;font-weight:600;line-height:1}
+.price-from,.price-unit{font-size:13px;font-weight:650;color:#68727e;letter-spacing:.02em}
+.price-who{color:#5c6570;font-size:15px;line-height:1.7;margin:0 0 24px;max-width:440px}
+.price-card ul{list-style:none;margin:0 0 30px;padding:24px 0 0;border-top:1px solid #dfe3e8;display:grid;gap:12px}
+.price-card li{position:relative;padding-left:28px;font-size:14px;line-height:1.55;color:#2a313b}
+.price-card li:before{content:"";position:absolute;left:2px;top:5px;width:11px;height:6px;border-left:2px solid #4868ac;border-bottom:2px solid #4868ac;transform:rotate(-45deg)}
+.price-card .button{margin-top:auto;align-self:flex-start}
+.price-card-featured{background:#10141c;border-color:#10141c;color:#fff}
+.price-card-featured .price-from,.price-card-featured .price-unit,.price-card-featured .price-who{color:#b4becc}
+.price-card-featured ul{border-color:#2a3446}
+.price-card-featured li{color:#e3e9f2}
+.price-card-featured li:before{border-color:#acc8ff}
+.price-badge{position:absolute;top:22px;right:24px;font-size:10px;font-weight:750;letter-spacing:.14em;text-transform:uppercase;color:#acc8ff;border:1px solid #3c4f6e;padding:6px 10px}
+.price-note{margin:26px 0 0;font-size:13px;line-height:1.7;color:#68727e;max-width:760px}
+@media(max-width:860px){.price-grid{grid-template-columns:1fr}}
+@media(max-width:620px){.price-card{padding:30px 22px}.price-badge{position:static;align-self:flex-start;margin-bottom:16px}}

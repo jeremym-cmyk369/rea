@@ -24,11 +24,11 @@ SITE = ROOT.parent / "aibusinessharness"
 OUT = SITE / "blog"
 IMG = OUT / "images"
 BASE = "https://aibusinessharness.com"
-ASSET_V = "20261029f"
+ASSET_V = "20261029g"
 PUBLISHED = "2026-10-29"
 AUTHOR = "Jeremy Mandile"
 
-NAV = [("/#solutions", "Solutions"), ("/#approach", "How it works"), ("/blog/", "Blog"), ("/#pilot", "Our pilot")]
+NAV = [("/#solutions", "Solutions"), ("/#approach", "How it works"), ("/blog/", "Blog"), ("/#pricing", "Pricing")]
 
 
 def parse(path: pathlib.Path) -> dict:
