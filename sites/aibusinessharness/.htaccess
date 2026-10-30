@@ -1,0 +1,7 @@
+# Always revalidate HTML so new deploys show up right away;
+# CSS/JS are versioned in the HTML (?v=...) so they can be cached.
+<IfModule mod_headers.c>
+  <FilesMatch "\.(html|php)$">
+    Header set Cache-Control "no-cache, must-revalidate"
+  </FilesMatch>
+</IfModule>
