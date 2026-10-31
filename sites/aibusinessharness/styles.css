@@ -138,3 +138,12 @@
 .hub-callout{display:flex;gap:16px;align-items:center;justify-content:space-between;background:#eef2f8;border:1px solid #d9e1ec;border-radius:10px;padding:18px 22px;margin:28px 0}.hub-callout p{margin:0!important;font-weight:600;color:var(--ink)}.hub-callout a{white-space:nowrap}
 .blog-teaser-foot{display:flex;flex-wrap:wrap;gap:14px 30px}
 @media(max-width:620px){.hub-callout{flex-direction:column;align-items:flex-start}.hub-callout a{white-space:normal}}
+
+/* Self-serve Pilot Fit Call booking */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.button-book{gap:18px;max-width:100%}
+.pilot-actions,.post-cta-actions{display:flex;flex-direction:column;align-items:flex-start;gap:16px;flex:0 0 auto;max-width:100%}
+.contact-book{margin-top:32px;display:flex;flex-direction:column;align-items:flex-start;gap:16px;max-width:420px}
+.contact-book p{margin:0;color:#d5deea;font-size:16px;line-height:1.6}
+.mobile-nav a.mobile-book{font-weight:750}
+@media(max-width:420px){.button-book{white-space:normal;line-height:1.35;text-align:left;justify-content:flex-start}}

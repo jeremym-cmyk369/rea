@@ -24,7 +24,8 @@ OUT = SITE / "ai-business-harness" / "index.html"
 IMG = "/blog/images"
 PUBLISHED = "2026-10-30"
 MODIFIED = "2026-10-31"
-ASSET_V = "20261030i"
+ASSET_V = "20261031a"
+BOOKING_URL = "https://calendar.app.google/NFpVCXArPBp37KKa8"
 
 SEO_TITLE = "AI Business Harness: Controlled AI Workflows for Business"
 META_DESC = ("Learn what an AI business harness is, how it differs from an AI agent, and how controlled AI "
@@ -183,7 +184,7 @@ def main():
       </div>
       <aside class="post-cta container" aria-label="Start with one workflow">
         <div><p class="eyebrow eyebrow-light">ONE WORKFLOW · THIRTY DAYS</p><h2>Start with one business workflow.</h2><p>Tell us about a task that keeps repeating. We'll help you frame it, identify the systems and controls it needs, and decide what stays under human review before anything touches live customer communication.</p></div>
-        <a class="button button-light" href="/#contact">Start with one business workflow <span aria-hidden="true">↗</span></a>
+        <div class="post-cta-actions"><a class="button button-light button-book" href="{BOOKING_URL}" target="_blank" rel="noopener">Book a 20-minute Pilot Fit Call<span class="sr-only"> (opens in a new tab)</span> <span aria-hidden="true">↗</span></a><a class="text-link text-link-light" href="/#contact">Start with one business workflow <span aria-hidden="true">↗</span></a></div>
       </aside>
     </article>
     {related(tpl_related)}
