@@ -257,7 +257,7 @@ def main() -> None:
     (OUT / "feed.xml").write_text(feed(newest), encoding="utf-8")
     (SITE / "sitemap.xml").write_text(sitemap(posts), encoding="utf-8")
     home = SITE / "index.html"
-    picks = [p for p in posts if p["order"] in (12, 11, 1)]
+    picks = [p for p in posts if p["order"] in (14, 12, 11)]
     picks.sort(key=lambda p: -p["order"])
     teaser = ('<!-- blog-teaser:start --><section class="blog-teaser section-pad" aria-labelledby="teaser-title"><div class="container">'
               '<div class="section-heading"><div><p class="eyebrow">INSIGHTS</p><h2 id="teaser-title">Practical AI,<br />explained plainly.</h2></div>'
