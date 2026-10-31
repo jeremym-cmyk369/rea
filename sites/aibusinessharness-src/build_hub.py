@@ -91,7 +91,7 @@ def schema():
          "headline": "What Is an AI Business Harness? The Operating System for Useful Business AI",
          "description": META_DESC, "image": images,
          "author": {"@type": "Person", "name": "Jeremy Mandile", "url": f"{BASE}/"},
-         "publisher": {"@type": "Organization", "name": "AI Business Harness", "url": f"{BASE}/",
+         "publisher": {"@type": "Organization", "@id": f"{BASE}/#organization", "name": "AI Business Harness", "url": f"{BASE}/",
                        "logo": image_object(f"{BASE}/assets/mark.svg"),
                        "parentOrganization": {"@type": "Organization", "name": "Mandile SEO",
                                               "url": "https://mandileseo.com"}},
