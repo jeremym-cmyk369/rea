@@ -14,6 +14,8 @@ import subprocess
 
 import markdown
 
+from image_rights import image_object
+
 HERE = pathlib.Path(__file__).resolve().parent
 SITE = HERE.parent / "aibusinessharness"
 BASE = "https://aibusinessharness.com"
@@ -21,7 +23,7 @@ URL = f"{BASE}/ai-business-harness/"
 OUT = SITE / "ai-business-harness" / "index.html"
 IMG = "/blog/images"
 PUBLISHED = "2026-10-30"
-MODIFIED = "2026-10-30"
+MODIFIED = "2026-10-31"
 ASSET_V = "20261030i"
 
 SEO_TITLE = "AI Business Harness: Controlled AI Workflows for Business"
@@ -82,16 +84,15 @@ def toc(body):
 
 
 def schema():
-    images = [{"@type": "ImageObject", "url": f"{BASE}{IMG}/{HERO}.jpg", "width": 1200, "height": 630},
-              {"@type": "ImageObject", "url": f"{BASE}{IMG}/{HERO}.svg", "width": 1200, "height": 630,
-               "caption": HERO_CAP}]
+    images = [image_object(f"{BASE}{IMG}/{HERO}.jpg", width=1200, height=630),
+              image_object(f"{BASE}{IMG}/{HERO}.svg", width=1200, height=630, caption=HERO_CAP)]
     graph = [
         {"@type": "TechArticle", "@id": f"{URL}#article", "mainEntityOfPage": {"@type": "WebPage", "@id": URL},
          "headline": "What Is an AI Business Harness? The Operating System for Useful Business AI",
          "description": META_DESC, "image": images,
          "author": {"@type": "Person", "name": "Jeremy Mandile", "url": f"{BASE}/"},
          "publisher": {"@type": "Organization", "name": "AI Business Harness", "url": f"{BASE}/",
-                       "logo": {"@type": "ImageObject", "url": f"{BASE}/assets/mark.svg"},
+                       "logo": image_object(f"{BASE}/assets/mark.svg"),
                        "parentOrganization": {"@type": "Organization", "name": "Mandile SEO",
                                               "url": "https://mandileseo.com"}},
          "datePublished": PUBLISHED, "dateModified": MODIFIED, "inLanguage": "en-US",
