@@ -17,6 +17,7 @@ import re
 
 import markdown
 
+from image_rights import LICENSE_URL, image_object
 from images import INLINE, svg_for
 
 ROOT = pathlib.Path(__file__).resolve().parent
@@ -27,6 +28,8 @@ BASE = "https://aibusinessharness.com"
 ASSET_V = "20261030i"
 PUBLISHED = "2026-10-29"
 AUTHOR = "Jeremy Mandile"
+HUB_MODIFIED = "2026-10-31"
+LICENSE_UPDATED = "2026-10-31"
 
 NAV = [("/#solutions", "Solutions"), ("/#approach", "How it works"), ("/blog/", "Blog"), ("/#pricing", "Pricing")]
 
@@ -82,7 +85,7 @@ def header() -> str:
   </header>'''
 
 
-FOOTER = '''<footer class="site-footer"><div class="container footer-top"><a class="brand brand-dark" href="/" aria-label="AI Business Harness homepage"><span class="brand-mark"><i></i><i></i><i></i></span><span class="brand-text">AI BUSINESS <strong>HARNESS</strong></span></a><p>Make room for better work.</p><a href="mailto:jeremy@aibusinessharness.com">Get in touch ↗</a></div><div class="container footer-bottom"><span>© <span id="year">2026</span> AI Business Harness · A Mandile SEO service</span><div><a href="/ai-business-harness/">AI Harness Guide</a><a href="/blog/">Blog</a><a href="/privacy.html">Privacy</a><a href="https://mandileseo.com" target="_blank" rel="noopener noreferrer">Mandile SEO ↗</a></div></div></footer>'''
+FOOTER = '''<footer class="site-footer"><div class="container footer-top"><a class="brand brand-dark" href="/" aria-label="AI Business Harness homepage"><span class="brand-mark"><i></i><i></i><i></i></span><span class="brand-text">AI BUSINESS <strong>HARNESS</strong></span></a><p>Make room for better work.</p><a href="mailto:jeremy@aibusinessharness.com">Get in touch ↗</a></div><div class="container footer-bottom"><span>© <span id="year">2026</span> AI Business Harness · A Mandile SEO service</span><div><a href="/ai-business-harness/">AI Harness Guide</a><a href="/blog/">Blog</a><a href="/privacy.html">Privacy</a><a href="/image-license/">Image license</a><a href="https://mandileseo.com" target="_blank" rel="noopener noreferrer">Mandile SEO ↗</a></div></div></footer>'''
 
 
 def head(title, desc, canonical, image, og_type, jsonld) -> str:
@@ -136,7 +139,7 @@ def post_page(p: dict, all_posts: list[dict]) -> str:
         "@context": "https://schema.org",
         "@graph": [
             {"@type": "BlogPosting", "headline": p["title"], "description": p["description"],
-             "image": [image], "datePublished": p["date"], "dateModified": p["date"],
+             "image": [image_object(image, width=1200, height=630, caption=p["image_alt"])], "datePublished": p["date"], "dateModified": p["date"],
              "author": {"@type": "Person", "name": AUTHOR, "url": BASE + "/"},
              "publisher": {"@type": "Organization", "name": "AI Business Harness", "url": BASE + "/",
                            "parentOrganization": {"@type": "Organization", "name": "Mandile SEO", "url": "https://mandileseo.com"}},
@@ -223,10 +226,61 @@ def feed(posts: list[dict]) -> str:
 
 def sitemap(posts: list[dict]) -> str:
     latest = max(p["date"] for p in posts)
-    urls = ([("/", "1.0", latest), ("/ai-business-harness/", "0.9", PUBLISHED), ("/blog/", "0.8", latest)]
-            + [(p["url"], "0.7", p["date"]) for p in posts] + [("/privacy.html", "0.3", PUBLISHED)])
+    urls = ([("/", "1.0", latest), ("/ai-business-harness/", "0.9", HUB_MODIFIED), ("/blog/", "0.8", latest)]
+            + [(p["url"], "0.7", p["date"]) for p in posts] + [("/privacy.html", "0.3", PUBLISHED), ("/image-license/", "0.2", LICENSE_UPDATED)])
     body = "".join(f"<url><loc>{BASE}{u}</loc><lastmod>{lm}</lastmod><priority>{pr}</priority></url>" for u, pr, lm in urls)
     return f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{body}</urlset>\n'
+
+
+def license_page() -> str:
+    canonical = LICENSE_URL
+    desc = ("Copyright, credit and licensing terms for the original illustrations and diagrams published on "
+            "aibusinessharness.com, and how to request permission to reuse them.")
+    jsonld = {"@context": "https://schema.org", "@graph": [
+        {"@type": "WebPage", "@id": canonical, "url": canonical, "name": "Image License and Reuse",
+         "description": desc, "inLanguage": "en-US", "dateModified": LICENSE_UPDATED,
+         "publisher": {"@type": "Organization", "name": "AI Business Harness", "url": BASE + "/"}},
+        {"@type": "BreadcrumbList", "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": BASE + "/"},
+            {"@type": "ListItem", "position": 2, "name": "Image License", "item": canonical}]}]}
+    return f'''{head("Image License and Reuse | AI Business Harness", desc, canonical, BASE + "/assets/share.png", "website", jsonld)}
+<body class="blog-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+  {header()}
+  <main id="main">
+    <article class="post">
+      <header class="post-head container">
+        <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><span aria-current="page">Image license</span></nav>
+        <p class="eyebrow">Legal</p>
+        <h1>Image license and reuse</h1>
+        <p class="post-meta">Last updated <time datetime="{LICENSE_UPDATED}">{nice_date(LICENSE_UPDATED)}</time></p>
+      </header>
+      <div class="post-body container">
+<h2 id="ownership">Who owns these images</h2>
+<p>The diagrams, illustrations and social images on aibusinessharness.com are original work created for AI Business Harness, a Mandile SEO service. They contain no stock photography and no third-party logos.</p>
+<p><strong>Copyright notice:</strong> © 2026 AI Business Harness. All rights reserved.</p>
+<p><strong>Credit line:</strong> AI Business Harness</p>
+<h2 id="allowed">What you may do without asking</h2>
+<ul>
+<li>Link to any page or image on this site.</li>
+<li>Show a thumbnail of an image as part of a search result, preview card or link to the original page.</li>
+<li>Quote a single diagram in a review, commentary or classroom setting when you credit “AI Business Harness” and link to the page where it appears.</li>
+</ul>
+<h2 id="permission">What needs permission</h2>
+<ul>
+<li>Republishing images on another website, in a course, a slide deck you distribute, or printed material.</li>
+<li>Editing, cropping or rebranding an image.</li>
+<li>Any commercial use, including use in advertising or in a product.</li>
+</ul>
+<h2 id="request">How to request a license</h2>
+<p>Email <a href="mailto:jeremy@aibusinessharness.com?subject=Image%20license%20request">jeremy@aibusinessharness.com</a> with the image URL, where and how you plan to use it, and for how long. We will reply with terms. Please don't assume permission until you have a written reply.</p>
+      </div>
+    </article>
+  </main>
+  {FOOTER}
+</body>
+</html>
+'''
 
 
 def render_pngs(slugs: list[str]) -> None:
@@ -256,6 +310,8 @@ def main() -> None:
     (OUT / "index.html").write_text(index_page(newest), encoding="utf-8")
     (OUT / "feed.xml").write_text(feed(newest), encoding="utf-8")
     (SITE / "sitemap.xml").write_text(sitemap(posts), encoding="utf-8")
+    (SITE / "image-license").mkdir(exist_ok=True)
+    (SITE / "image-license" / "index.html").write_text(license_page(), encoding="utf-8")
     home = SITE / "index.html"
     picks = [p for p in posts if p["order"] in (14, 12, 11)]
     picks.sort(key=lambda p: -p["order"])
