@@ -284,7 +284,171 @@ def img_pilot():
     return s
 
 
-# 11 — what an agent product supplies vs. what the harness still adds
+AMBER = "#f2b46b"
+
+
+# 11 — what is an AI harness: model inside a ring of controls
+def img_harness_explained():
+    import math
+    cx, cy = 845, 300
+    s = f'<circle cx="{cx}" cy="{cy}" r="228" fill="none" stroke="{LINE}" stroke-opacity=".35"/>'
+    s += f'<circle cx="{cx}" cy="{cy}" r="148" fill="none" stroke="{BLUE2}" stroke-width="10" stroke-opacity=".35"/>'
+    s += f'<circle cx="{cx}" cy="{cy}" r="148" fill="none" stroke="{BLUE}" stroke-opacity=".55" stroke-dasharray="3 9"/>'
+    for t, a in [("LEADS", -150), ("ESTIMATES", -30), ("INBOX", 90)]:
+        r = math.radians(a)
+        x, y = cx + 228 * math.cos(r), cy + 228 * math.sin(r)
+        s += line(cx + 162 * math.cos(r), cy + 162 * math.sin(r), x, y)
+        s += chip(x, y, t)
+    for t, a, hot in [("TOOLS", -90, False), ("RULES", 0, False), ("APPROVAL", 180, True), ("RECORD", 45 + 90, False)]:
+        r = math.radians(a)
+        x, y = cx + 148 * math.cos(r), cy + 148 * math.sin(r)
+        s += chip(x, y, t, active=hot)
+    s += node(cx, cy, 66, "MODEL", "THE BRAIN", strong=True)
+    s += f'<text x="100" y="236" font-size="52" font-weight="600" letter-spacing="-2" fill="{INK}">What is an</text>'
+    s += f'<text x="100" y="298" font-size="52" font-weight="600" letter-spacing="-2" fill="{BLUE}">AI harness?</text>'
+    s += f'<text x="102" y="344" font-size="15" letter-spacing="1" fill="{MUTED}">Explained for business owners</text>'
+    s += f'<text x="102" y="372" font-size="15" letter-spacing="1" fill="{MUTED}">Tools · rules · approval · record</text>'
+    return s
+
+
+# inline — agent running wild vs harnessed agent
+def img_wild_vs_harnessed():
+    s = f'<line x1="600" y1="70" x2="600" y2="520" stroke="{LINE}" stroke-opacity=".5"/>'
+    s += f'<text x="70" y="78" font-size="13" font-weight="700" letter-spacing="3" fill="{AMBER}">NO HARNESS</text>'
+    s += f'<text x="70" y="102" font-size="14" fill="{MUTED}">Broad access · no steps · no review</text>'
+    s += f'<text x="650" y="78" font-size="13" font-weight="700" letter-spacing="3" fill="{BLUE}">HARNESSED</text>'
+    s += f'<text x="650" y="102" font-size="14" fill="{MUTED}">Approved tools · approval · a record</text>'
+    ax, ay = 190, 320
+    targets = [("ALL EMAIL", 450, 160), ("BANK", 470, 240), ("PAYROLL", 470, 320), ("CUSTOMERS", 460, 400), ("EVERY FILE", 440, 480)]
+    for t, x, y in targets:
+        s += f'<line x1="{ax+52}" y1="{ay}" x2="{x-62}" y2="{y}" stroke="{AMBER}" stroke-opacity=".7" stroke-width="1.4"/>'
+        s += (f'<g transform="translate({x} {y})"><rect x="-62" y="-18" width="124" height="36" rx="5" fill="{CARD}" stroke="{AMBER}" stroke-opacity=".7"/>'
+              f'<text y="5" text-anchor="middle" font-size="11" font-weight="700" letter-spacing="2" fill="#f6d6ad">{t}</text></g>')
+    s += node(ax, ay, 52, "AGENT")
+    s += f'<text x="{ax}" y="{ay+88}" text-anchor="middle" font-size="11" letter-spacing="2.4" fill="{AMBER}">ACTS ON ITS OWN</text>'
+    # harnessed flow
+    y = 300
+    s += f'<rect x="640" y="150" width="510" height="310" rx="14" fill="none" stroke="{BLUE2}" stroke-opacity=".7" stroke-dasharray="3 7"/>'
+    s += f'<text x="660" y="176" font-size="10" font-weight="700" letter-spacing="2.6" fill="{BLUE2}">HARNESS</text>'
+    s += node(715, y, 44, "AGENT")
+    s += line(759, y, 800, y, dash=False, color=BLUE2)
+    s += f'<g transform="translate(850 {y-50})">{chip(0,0,"CRM",100)}</g><g transform="translate(850 {y+50})">{chip(0,0,"INBOX",100)}</g>'
+    s += line(800, y, 800, y - 50, dash=False, color=BLUE2) + line(800, y, 800, y + 50, dash=False, color=BLUE2)
+    s += line(900, y - 50, 950, y, dash=False, color=BLUE2) + line(900, y + 50, 950, y, dash=False, color=BLUE2)
+    s += f'<circle cx="985" cy="{y}" r="34" fill="#1d2b42" stroke="{BLUE}"/>'
+    s += f'<circle cx="985" cy="{y-9}" r="8" fill="none" stroke="{INK}" stroke-width="2"/><path d="M969 {y+17} q16 -20 32 0" fill="none" stroke="{INK}" stroke-width="2"/>'
+    s += f'<text x="985" y="{y+58}" text-anchor="middle" font-size="10" font-weight="700" letter-spacing="2.2" fill="{BLUE}">YOU APPROVE</text>'
+    s += line(1019, y, 1060, y, dash=False, color=BLUE2)
+    s += f'<g transform="translate(1090 {y})"><circle r="24" fill="#1d2b42" stroke="{BLUE}"/>{check(0,0)}</g>'
+    s += f'<text x="1090" y="{y+50}" text-anchor="middle" font-size="10" font-weight="700" letter-spacing="2.2" fill="{INK}">SENT</text>'
+    s += f'<text x="1090" y="{y+66}" text-anchor="middle" font-size="10" letter-spacing="2.2" fill="{MUTED}">+ LOGGED</text>'
+    s += f'<text x="895" y="430" text-anchor="middle" font-size="11" letter-spacing="2.4" fill="{MUTED}">ONLY THE TOOLS THE JOB NEEDS</text>'
+    return s
+
+
+# inline — three things called "harness"
+def img_three_meanings():
+    cards = [
+        ("DEVELOPER PLATFORMS", ["Foundations engineers use", "to build their own agents"], "FOR ENGINEERS", False),
+        ("SOFTWARE DELIVERY", ["Same word, different job:", "testing and shipping code"], "FOR DEV TEAMS", False),
+        ("OPERATIONS HARNESS", ["Built around your own", "workflows and tools"], "FOR YOUR BUSINESS", True),
+    ]
+    s = f'<text x="600" y="92" text-anchor="middle" font-size="40" font-weight="600" letter-spacing="-1.5" fill="{INK}">Three things called <tspan fill="{BLUE}">"harness"</tspan></text>'
+    for i, (t, lines_, tag, hot) in enumerate(cards):
+        x = 90 + i * 350
+        if hot:
+            s += f'<rect x="{x-14}" y="136" width="328" height="358" rx="14" fill="{BLUE}" opacity=".12" filter="url(#soft)"/>'
+        s += f'<rect x="{x}" y="150" width="300" height="330" rx="10" fill="{"#1d2b42" if hot else CARD}" stroke="{BLUE if hot else LINE}" stroke-opacity=".85"/>'
+        s += f'<text x="{x+28}" y="196" font-size="11" font-weight="700" letter-spacing="2.6" fill="{BLUE if hot else MUTED}">0{i+1}</text>'
+        s += f'<text x="{x+28}" y="232" font-size="15" font-weight="700" letter-spacing="2.2" fill="{INK}">{t}</text>'
+        for j, ln in enumerate(lines_):
+            s += f'<text x="{x+28}" y="{272+j*26}" font-size="17" fill="{"#dbe6f7" if hot else "#b8c6da"}">{ln}</text>'
+        # mini glyph
+        gy = 380
+        if i == 0:
+            for k in range(4):
+                s += f'<rect x="{x+28+k*34}" y="{gy}" width="26" height="26" rx="4" fill="none" stroke="{LINE}"/>'
+            s += f'<text x="{x+190}" y="{gy+19}" font-size="15" fill="{MUTED}">&lt;/&gt;</text>'
+        elif i == 1:
+            s += f'<path d="M{x+28} {gy+13} h170" stroke="{LINE}" stroke-width="1.6"/>'
+            for k in range(4):
+                s += f'<circle cx="{x+40+k*50}" cy="{gy+13}" r="8" fill="{CARD2}" stroke="{LINE}"/>'
+        else:
+            cx0 = x + 28
+            for k, w in enumerate(["INQUIRY", "DRAFT", "APPROVE"]):
+                cw = len(w) * 9 + 24
+                s += chip(cx0 + cw / 2, gy + 13, w, cw, active=(k == 2))
+                cx0 += cw + 8
+        s += f'<text x="{x+28}" y="452" font-size="11" font-weight="700" letter-spacing="2.4" fill="{BLUE if hot else LINE}">{tag}</text>'
+        if hot:
+            s += f'<g transform="translate({x+262} 196)"><circle r="16" fill="#1d2b42" stroke="{BLUE}"/>{check(0,0,.7)}</g>'
+    return s
+
+
+# 14 — Microsoft's enterprise harness vs. the small business version
+def img_enterprise_vs_local():
+    s = f'<text x="600" y="86" text-anchor="middle" font-size="38" font-weight="600" letter-spacing="-1.5" fill="{INK}">Same idea, <tspan fill="{BLUE}">different size</tspan></text>'
+    s += f'<text x="600" y="120" text-anchor="middle" font-size="15" letter-spacing="1" fill="{MUTED}">The harness, not the model, is what gets the work done</text>'
+    # left panel: enterprise developer platform
+    x0 = 80
+    s += f'<rect x="{x0}" y="160" width="480" height="340" rx="10" fill="{CARD}" stroke="{LINE}" stroke-opacity=".85"/>'
+    s += f'<text x="{x0+28}" y="200" font-size="12" font-weight="700" letter-spacing="2.6" fill="{MUTED}">ENTERPRISE</text>'
+    s += f'<text x="{x0+28}" y="232" font-size="20" font-weight="600" fill="{INK}">A platform developers build on</text>'
+    for r in range(3):
+        for c in range(6):
+            s += f'<rect x="{x0+28+c*72}" y="{262+r*40}" width="60" height="28" rx="4" fill="none" stroke="{LINE}" stroke-opacity=".8"/>'
+    s += f'<text x="{x0+28}" y="410" font-size="15" fill="#b8c6da">20+ models · SDK · cloud runtime</text>'
+    s += f'<text x="{x0+28}" y="470" font-size="11" font-weight="700" letter-spacing="2.4" fill="{LINE}">NEEDS AN ENGINEERING TEAM</text>'
+    # right panel: small business harness
+    x1 = 640
+    s += f'<rect x="{x1-14}" y="146" width="508" height="368" rx="14" fill="{BLUE}" opacity=".12" filter="url(#soft)"/>'
+    s += f'<rect x="{x1}" y="160" width="480" height="340" rx="10" fill="#1d2b42" stroke="{BLUE}" stroke-opacity=".85"/>'
+    s += f'<text x="{x1+28}" y="200" font-size="12" font-weight="700" letter-spacing="2.6" fill="{BLUE}">YOUR BUSINESS</text>'
+    s += f'<text x="{x1+28}" y="232" font-size="20" font-weight="600" fill="{INK}">A harness built and run for you</text>'
+    cx0 = x1 + 28
+    for k, w in enumerate(["LEADS", "ESTIMATES", "INBOX"]):
+        cw = len(w) * 9 + 32
+        s += chip(cx0 + cw / 2, 290, w, cw)
+        cx0 += cw + 12
+    s += line(x1 + 240, 312, x1 + 240, 352, dash=False, color=BLUE2)
+    s += chip(x1 + 240, 372, "YOU APPROVE", 170, active=True)
+    s += f'<g transform="translate({x1+380} 372)"><circle r="18" fill="#1d2b42" stroke="{BLUE}"/>{check(0,0,.8)}</g>'
+    s += line(x1 + 325, 372, x1 + 362, 372, dash=False, color=BLUE2)
+    s += f'<text x="{x1+28}" y="470" font-size="11" font-weight="700" letter-spacing="2.4" fill="{BLUE}">NEEDS THE TOOLS YOU ALREADY USE</text>'
+    return s
+
+
+# inline — how the layers stack up
+def img_stack():
+    layers = [
+        ("BUSINESS OUTCOMES", "Follow-ups · records · scheduling · reporting", "WHAT YOU SEE", False),
+        ("AI BUSINESS HARNESS", "Workflow rules · permissions · approvals · checks · monitoring", "WHERE YOU APPROVE", True),
+        ("AGENT ENGINE", "Microsoft Copilot SDK / Foundry, or another runtime", "WE MANAGE", False),
+        ("MODELS AND TOOLS", "AI models · skills · MCP · CRM · email · calendar", "WE CONNECT", False),
+    ]
+    s = f'<text x="600" y="70" text-anchor="middle" font-size="30" font-weight="600" letter-spacing="-1" fill="{INK}">How the pieces <tspan fill="{BLUE}">stack up</tspan></text>'
+    x, w, h, gap, y0 = 150, 900, 92, 22, 104
+    for i, (name, sub, tag, hot) in enumerate(layers):
+        y = y0 + i * (h + gap)
+        if hot:
+            s += f'<rect x="{x-12}" y="{y-12}" width="{w+24}" height="{h+24}" rx="14" fill="{BLUE}" opacity=".14" filter="url(#soft)"/>'
+        s += f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="10" fill="{"#1d2b42" if hot else CARD}" stroke="{BLUE if hot else LINE}" stroke-opacity=".85"/>'
+        s += f'<text x="{x+32}" y="{y+40}" font-size="17" font-weight="700" letter-spacing="2.4" fill="{INK}">{name}</text>'
+        s += f'<text x="{x+32}" y="{y+68}" font-size="16" fill="{"#dbe6f7" if hot else "#b8c6da"}">{sub}</text>'
+        s += f'<text x="{x+w-32}" y="{y+40}" text-anchor="end" font-size="11" font-weight="700" letter-spacing="2.4" fill="{BLUE if hot else MUTED}">{tag}</text>'
+        if i < len(layers) - 1:
+            s += line(600, y + h, 600, y + h + gap, dash=False, color=BLUE2)
+    return s
+
+
+INLINE = {
+    "ai-harness-running-wild-vs-harnessed": (img_wild_vs_harnessed, "AGENT VS HARNESS"),
+    "ai-harness-three-meanings": (img_three_meanings, "WHICH HARNESS?"),
+    "ai-business-harness-stack": (img_stack, "HOW IT STACKS UP"),
+}
+
+
+# 12 — what an agent product supplies vs. what the harness still adds
 def img_grok_coverage():
     s = f'<text x="100" y="118" font-size="40" font-weight="600" letter-spacing="-1.5" fill="{INK}">Grok Bot covers part.</text>'
     s += f'<text x="100" y="166" font-size="40" font-weight="600" letter-spacing="-1.5" fill="{BLUE}">The harness covers the rest.</text>'
@@ -325,9 +489,11 @@ IMAGES = {
     "ai-browser-automation-vs-api-integrations": (img_api_vs_browser, "INTEGRATIONS"),
     "what-to-log-ai-agent-business-work": (img_audit_log, "SAFETY AND CONTROL"),
     "30-day-ai-workflow-pilot": (img_pilot, "GETTING STARTED"),
+    "what-is-an-ai-harness-small-business": (img_harness_explained, "FOUNDATIONS"),
+    "microsoft-copilot-harness-small-business": (img_enterprise_vs_local, "INDUSTRY NEWS"),
 }
 
 
 def svg_for(slug: str) -> str:
-    fn, label = IMAGES[slug]
+    fn, label = IMAGES.get(slug) or INLINE[slug]
     return frame(fn(), label)
