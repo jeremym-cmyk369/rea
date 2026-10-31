@@ -385,7 +385,7 @@ def img_three_meanings():
     return s
 
 
-# 12 — Microsoft's enterprise harness vs. the small business version
+# 14 — Microsoft's enterprise harness vs. the small business version
 def img_enterprise_vs_local():
     s = f'<text x="600" y="86" text-anchor="middle" font-size="38" font-weight="600" letter-spacing="-1.5" fill="{INK}">Same idea, <tspan fill="{BLUE}">different size</tspan></text>'
     s += f'<text x="600" y="120" text-anchor="middle" font-size="15" letter-spacing="1" fill="{MUTED}">The harness, not the model, is what gets the work done</text>'
@@ -448,7 +448,37 @@ INLINE = {
 }
 
 
+# 12 — what an agent product supplies vs. what the harness still adds
+def img_grok_coverage():
+    s = f'<text x="100" y="118" font-size="40" font-weight="600" letter-spacing="-1.5" fill="{INK}">Grok Bot covers part.</text>'
+    s += f'<text x="100" y="166" font-size="40" font-weight="600" letter-spacing="-1.5" fill="{BLUE}">The harness covers the rest.</text>'
+    left = [("CLOUD COMPUTER + APP SIGN-IN", "Bots work across your tools", False),
+            ("MODEL-BASED AUTO-REVIEW", "A model screens risky actions", False),
+            ("ENTERPRISE-ONLY CONTROLS", "Network rules · audit · recording", False)]
+    right = [("SCOPED PERMISSIONS", "Minimum access per workflow", True),
+             ("EXACT-ACTION APPROVAL", "A person signs off", True),
+             ("VERIFY + RECONCILE", "Confirm results, never assume", True),
+             ("DUPLICATE PROTECTION", "One send, one booking", True),
+             ("BUSINESS RECORD", "Who approved what, and why", True)]
+    s += f'<text x="100" y="232" font-size="11" font-weight="700" letter-spacing="2.6" fill="{MUTED}">WHAT GROK BOT SUPPLIES</text>'
+    s += f'<text x="640" y="232" font-size="11" font-weight="700" letter-spacing="2.6" fill="{BLUE}">WHAT THE HARNESS STILL ADDS</text>'
+    for i, (a, b, _) in enumerate(left):
+        y = 252 + i * 92
+        s += f'<rect x="100" y="{y}" width="460" height="76" rx="6" fill="{CARD}" stroke="{LINE}" stroke-opacity=".8"/>'
+        s += f'<text x="124" y="{y+33}" font-size="12" font-weight="700" letter-spacing="2.2" fill="{INK}">{a}</text>'
+        s += f'<text x="124" y="{y+56}" font-size="13" letter-spacing=".4" fill="{MUTED}">{b}</text>'
+    for i, (a, b, _) in enumerate(right):
+        y = 252 + i * 56
+        s += f'<rect x="640" y="{y}" width="460" height="46" rx="6" fill="#1d2b42" stroke="{BLUE2}" stroke-opacity=".9"/>'
+        s += f'<g transform="translate(664 {y+23})">{check(0, 0, .8)}</g>'
+        s += f'<text x="690" y="{y+28}" font-size="11.5" font-weight="700" letter-spacing="2" fill="{INK}">{a}</text>'
+        s += f'<text x="1084" y="{y+28}" text-anchor="end" font-size="11.5" letter-spacing=".3" fill="{MUTED}">{b}</text>'
+    s += line(560, 380, 640, 380, dash=True, color=BLUE2, op=.9)
+    return s
+
+
 IMAGES = {
+    "grok-ai-business-harness": (img_grok_coverage, "PLATFORMS"),
     "what-is-an-ai-business-harness": (img_operating_layer, "FOUNDATIONS"),
     "ai-model-vs-agent-vs-harness": (img_three_layers, "FOUNDATIONS"),
     "how-to-find-a-business-workflow-to-automate": (img_task_grid, "GETTING STARTED"),

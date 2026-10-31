@@ -55,7 +55,7 @@ These terms are related but not interchangeable.
 
 An AI agent chooses steps and uses tools toward a goal. An AI business harness coordinates that work within the business's permissions, approvals, operating procedures, and monitoring. These responsibilities may be built into the same system.
 
-The distinction is about responsibility and operational design, not necessarily separate software products. A mature agent product may include many harness capabilities. A harness may also support structured workflows that use model calls without full agent autonomy. (Go deeper on the [AI model, agent, and harness difference](/blog/ai-model-vs-agent-vs-harness/).)
+The distinction is about responsibility and operational design, not necessarily separate software products. A mature agent product may include many harness capabilities. (See [what Grok Bot covers and what it doesn't](/blog/grok-ai-business-harness/) for one example.) A harness may also support structured workflows that use model calls without full agent autonomy. (Go deeper on the [AI model, agent, and harness difference](/blog/ai-model-vs-agent-vs-harness/).)
 
 This framing avoids several overstatements:
 
