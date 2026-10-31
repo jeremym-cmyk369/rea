@@ -25,7 +25,13 @@ SITE = ROOT.parent / "aibusinessharness"
 OUT = SITE / "blog"
 IMG = OUT / "images"
 BASE = "https://aibusinessharness.com"
-ASSET_V = "20261030i"
+ASSET_V = "20261031a"
+BOOKING_URL = "https://calendar.app.google/NFpVCXArPBp37KKa8"
+BOOKING_BUTTON = (
+    f'<a class="button button-light button-book" href="{BOOKING_URL}" target="_blank" rel="noopener">'
+    'Book a 20-minute Pilot Fit Call<span class="sr-only"> (opens in a new tab)</span> '
+    '<span aria-hidden="true">↗</span></a>'
+)
 PUBLISHED = "2026-10-29"
 AUTHOR = "Jeremy Mandile"
 HUB_MODIFIED = "2026-10-31"
@@ -76,12 +82,22 @@ def render_body(md: str) -> str:
 
 def header() -> str:
     links = "".join(f'<a href="{h}">{t}</a>' for h, t in NAV)
+    book_nav = (
+        f'<a class="nav-cta" href="{BOOKING_URL}" target="_blank" rel="noopener" '
+        'aria-label="Book a 20-minute Pilot Fit Call (opens in a new tab)">'
+        'Book a call <span aria-hidden="true">↗</span></a>'
+    )
+    book_mobile = (
+        f'<a class="mobile-book" href="{BOOKING_URL}" target="_blank" rel="noopener">'
+        'Book a 20-minute Pilot Fit Call<span class="sr-only"> (opens in a new tab)</span> '
+        '<span aria-hidden="true">↗</span></a>'
+    )
     return f'''<header class="site-header" id="top">
     <a class="brand" href="/" aria-label="AI Business Harness homepage"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span><span class="brand-text">AI BUSINESS <strong>HARNESS</strong></span></a>
     <nav class="desktop-nav" aria-label="Main navigation">{links}</nav>
-    <a class="nav-cta" href="/#contact">Let's talk <span aria-hidden="true">↗</span></a>
+    {book_nav}
     <button class="menu-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-nav"><span></span><span></span></button>
-    <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation" hidden>{links}<a href="/#contact">Start a conversation</a></nav>
+    <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation" hidden>{links}{book_mobile}<a href="/#contact">Start a conversation</a></nav>
   </header>'''
 
 
@@ -174,7 +190,7 @@ def post_page(p: dict, all_posts: list[dict]) -> str:
       </div>
       <aside class="post-cta container" aria-label="Start a pilot">
         <div><p class="eyebrow eyebrow-light">ONE WORKFLOW · THIRTY DAYS</p><h2>Have a task that keeps repeating?</h2><p>Tell us about it. We'll help you decide whether a controlled AI workflow is worth it, before anything touches your live systems.</p></div>
-        <a class="button button-light" href="/#contact">Find your first workflow <span aria-hidden="true">↗</span></a>
+        <div class="post-cta-actions">{BOOKING_BUTTON}<a class="text-link text-link-light" href="/#contact">Find your first workflow <span aria-hidden="true">↗</span></a></div>
       </aside>
     </article>
     <section class="related container" aria-labelledby="related-title"><h2 id="related-title">Keep reading</h2><div class="post-grid">{rel}</div></section>

@@ -22,6 +22,8 @@ The site is intentionally isolated from REA's own `website/` directory and from 
 ## Contact form
 The inquiry form opens the visitor's email program using a prefilled `mailto:` link addressed to `jeremy@mandileseo.com`. This does **not** deliver messages from the server. For reliable inbound submissions, connect a tested backend service and update the privacy disclosure before launch.
 
+Visitors can also book a 20-minute Pilot Fit Call themselves: [https://calendar.app.google/NFpVCXArPBp37KKa8](https://calendar.app.google/NFpVCXArPBp37KKa8). Those links open in a new tab.
+
 ## Demonstration integrity
 The estimate-follow-up demo is entirely client-side and uses fictional records. Its approval buttons simulate a review decision only; no CRM, agent, email, or back-office integration is connected. Never describe it as production AI automation.
 
