@@ -385,9 +385,66 @@ def img_three_meanings():
     return s
 
 
+# 12 — Microsoft's enterprise harness vs. the small business version
+def img_enterprise_vs_local():
+    s = f'<text x="600" y="86" text-anchor="middle" font-size="38" font-weight="600" letter-spacing="-1.5" fill="{INK}">Same idea, <tspan fill="{BLUE}">different size</tspan></text>'
+    s += f'<text x="600" y="120" text-anchor="middle" font-size="15" letter-spacing="1" fill="{MUTED}">The harness, not the model, is what gets the work done</text>'
+    # left panel: enterprise developer platform
+    x0 = 80
+    s += f'<rect x="{x0}" y="160" width="480" height="340" rx="10" fill="{CARD}" stroke="{LINE}" stroke-opacity=".85"/>'
+    s += f'<text x="{x0+28}" y="200" font-size="12" font-weight="700" letter-spacing="2.6" fill="{MUTED}">ENTERPRISE</text>'
+    s += f'<text x="{x0+28}" y="232" font-size="20" font-weight="600" fill="{INK}">A platform developers build on</text>'
+    for r in range(3):
+        for c in range(6):
+            s += f'<rect x="{x0+28+c*72}" y="{262+r*40}" width="60" height="28" rx="4" fill="none" stroke="{LINE}" stroke-opacity=".8"/>'
+    s += f'<text x="{x0+28}" y="410" font-size="15" fill="#b8c6da">20+ models · SDK · cloud runtime</text>'
+    s += f'<text x="{x0+28}" y="470" font-size="11" font-weight="700" letter-spacing="2.4" fill="{LINE}">NEEDS AN ENGINEERING TEAM</text>'
+    # right panel: small business harness
+    x1 = 640
+    s += f'<rect x="{x1-14}" y="146" width="508" height="368" rx="14" fill="{BLUE}" opacity=".12" filter="url(#soft)"/>'
+    s += f'<rect x="{x1}" y="160" width="480" height="340" rx="10" fill="#1d2b42" stroke="{BLUE}" stroke-opacity=".85"/>'
+    s += f'<text x="{x1+28}" y="200" font-size="12" font-weight="700" letter-spacing="2.6" fill="{BLUE}">YOUR BUSINESS</text>'
+    s += f'<text x="{x1+28}" y="232" font-size="20" font-weight="600" fill="{INK}">A harness built and run for you</text>'
+    cx0 = x1 + 28
+    for k, w in enumerate(["LEADS", "ESTIMATES", "INBOX"]):
+        cw = len(w) * 9 + 32
+        s += chip(cx0 + cw / 2, 290, w, cw)
+        cx0 += cw + 12
+    s += line(x1 + 240, 312, x1 + 240, 352, dash=False, color=BLUE2)
+    s += chip(x1 + 240, 372, "YOU APPROVE", 170, active=True)
+    s += f'<g transform="translate({x1+380} 372)"><circle r="18" fill="#1d2b42" stroke="{BLUE}"/>{check(0,0,.8)}</g>'
+    s += line(x1 + 325, 372, x1 + 362, 372, dash=False, color=BLUE2)
+    s += f'<text x="{x1+28}" y="470" font-size="11" font-weight="700" letter-spacing="2.4" fill="{BLUE}">NEEDS THE TOOLS YOU ALREADY USE</text>'
+    return s
+
+
+# inline — how the layers stack up
+def img_stack():
+    layers = [
+        ("BUSINESS OUTCOMES", "Follow-ups · records · scheduling · reporting", "WHAT YOU SEE", False),
+        ("AI BUSINESS HARNESS", "Workflow rules · permissions · approvals · checks · monitoring", "WHERE YOU APPROVE", True),
+        ("AGENT ENGINE", "Microsoft Copilot SDK / Foundry, or another runtime", "WE MANAGE", False),
+        ("MODELS AND TOOLS", "AI models · skills · MCP · CRM · email · calendar", "WE CONNECT", False),
+    ]
+    s = f'<text x="600" y="70" text-anchor="middle" font-size="30" font-weight="600" letter-spacing="-1" fill="{INK}">How the pieces <tspan fill="{BLUE}">stack up</tspan></text>'
+    x, w, h, gap, y0 = 150, 900, 92, 22, 104
+    for i, (name, sub, tag, hot) in enumerate(layers):
+        y = y0 + i * (h + gap)
+        if hot:
+            s += f'<rect x="{x-12}" y="{y-12}" width="{w+24}" height="{h+24}" rx="14" fill="{BLUE}" opacity=".14" filter="url(#soft)"/>'
+        s += f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="10" fill="{"#1d2b42" if hot else CARD}" stroke="{BLUE if hot else LINE}" stroke-opacity=".85"/>'
+        s += f'<text x="{x+32}" y="{y+40}" font-size="17" font-weight="700" letter-spacing="2.4" fill="{INK}">{name}</text>'
+        s += f'<text x="{x+32}" y="{y+68}" font-size="16" fill="{"#dbe6f7" if hot else "#b8c6da"}">{sub}</text>'
+        s += f'<text x="{x+w-32}" y="{y+40}" text-anchor="end" font-size="11" font-weight="700" letter-spacing="2.4" fill="{BLUE if hot else MUTED}">{tag}</text>'
+        if i < len(layers) - 1:
+            s += line(600, y + h, 600, y + h + gap, dash=False, color=BLUE2)
+    return s
+
+
 INLINE = {
     "ai-harness-running-wild-vs-harnessed": (img_wild_vs_harnessed, "AGENT VS HARNESS"),
     "ai-harness-three-meanings": (img_three_meanings, "WHICH HARNESS?"),
+    "ai-business-harness-stack": (img_stack, "HOW IT STACKS UP"),
 }
 
 
@@ -403,6 +460,7 @@ IMAGES = {
     "what-to-log-ai-agent-business-work": (img_audit_log, "SAFETY AND CONTROL"),
     "30-day-ai-workflow-pilot": (img_pilot, "GETTING STARTED"),
     "what-is-an-ai-harness-small-business": (img_harness_explained, "FOUNDATIONS"),
+    "microsoft-copilot-harness-small-business": (img_enterprise_vs_local, "INDUSTRY NEWS"),
 }
 
 

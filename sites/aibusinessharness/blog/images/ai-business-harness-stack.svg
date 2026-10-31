@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" role="img">
+<defs>
+  <radialGradient id="glow" cx="62%" cy="48%" r="55%"><stop offset="0" stop-color="#3a5a8f" stop-opacity=".55"/><stop offset=".55" stop-color="#16233a" stop-opacity=".35"/><stop offset="1" stop-color="#080a0e" stop-opacity="0"/></radialGradient>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0b0f16"/><stop offset="1" stop-color="#070a0f"/></linearGradient>
+  <linearGradient id="core" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2c3f5c"/><stop offset=".7" stop-color="#101722"/></linearGradient>
+  <filter id="soft" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="18"/></filter>
+  <pattern id="dots" width="28" height="28" patternUnits="userSpaceOnUse"><circle cx="1.5" cy="1.5" r="1.1" fill="#ffffff" opacity=".05"/></pattern>
+</defs>
+<rect width="1200" height="630" fill="url(#bg)"/>
+<rect width="1200" height="630" fill="url(#dots)"/>
+<rect width="1200" height="630" fill="url(#glow)"/>
+<g font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif">
+<text x="600" y="70" text-anchor="middle" font-size="30" font-weight="600" letter-spacing="-1" fill="#e8eef8">How the pieces <tspan fill="#acc8ff">stack up</tspan></text><rect x="150" y="104" width="900" height="92" rx="10" fill="#141c29" stroke="#5c718d" stroke-opacity=".85"/><text x="182" y="144" font-size="17" font-weight="700" letter-spacing="2.4" fill="#e8eef8">BUSINESS OUTCOMES</text><text x="182" y="172" font-size="16" fill="#b8c6da">Follow-ups · records · scheduling · reporting</text><text x="1018" y="144" text-anchor="end" font-size="11" font-weight="700" letter-spacing="2.4" fill="#8fa0b8">WHAT YOU SEE</text><line x1="600" y1="196" x2="600" y2="218" stroke="#6f8fc6" stroke-opacity="0.8" stroke-width="1.4"/><rect x="138" y="206" width="924" height="116" rx="14" fill="#acc8ff" opacity=".14" filter="url(#soft)"/><rect x="150" y="218" width="900" height="92" rx="10" fill="#1d2b42" stroke="#acc8ff" stroke-opacity=".85"/><text x="182" y="258" font-size="17" font-weight="700" letter-spacing="2.4" fill="#e8eef8">AI BUSINESS HARNESS</text><text x="182" y="286" font-size="16" fill="#dbe6f7">Workflow rules · permissions · approvals · checks · monitoring</text><text x="1018" y="258" text-anchor="end" font-size="11" font-weight="700" letter-spacing="2.4" fill="#acc8ff">WHERE YOU APPROVE</text><line x1="600" y1="310" x2="600" y2="332" stroke="#6f8fc6" stroke-opacity="0.8" stroke-width="1.4"/><rect x="150" y="332" width="900" height="92" rx="10" fill="#141c29" stroke="#5c718d" stroke-opacity=".85"/><text x="182" y="372" font-size="17" font-weight="700" letter-spacing="2.4" fill="#e8eef8">AGENT ENGINE</text><text x="182" y="400" font-size="16" fill="#b8c6da">Microsoft Copilot SDK / Foundry, or another runtime</text><text x="1018" y="372" text-anchor="end" font-size="11" font-weight="700" letter-spacing="2.4" fill="#8fa0b8">WE MANAGE</text><line x1="600" y1="424" x2="600" y2="446" stroke="#6f8fc6" stroke-opacity="0.8" stroke-width="1.4"/><rect x="150" y="446" width="900" height="92" rx="10" fill="#141c29" stroke="#5c718d" stroke-opacity=".85"/><text x="182" y="486" font-size="17" font-weight="700" letter-spacing="2.4" fill="#e8eef8">MODELS AND TOOLS</text><text x="182" y="514" font-size="16" fill="#b8c6da">AI models · skills · MCP · CRM · email · calendar</text><text x="1018" y="486" text-anchor="end" font-size="11" font-weight="700" letter-spacing="2.4" fill="#8fa0b8">WE CONNECT</text>
+<g transform="translate(56 572)">
+  <g transform="skewX(-15)"><rect x="0" y="0" width="5" height="20" fill="#e8eef8"/><rect x="9" y="4" width="5" height="16" fill="#e8eef8" opacity=".7"/><rect x="18" y="8" width="5" height="12" fill="#e8eef8" opacity=".45"/></g>
+  <text x="38" y="16" font-size="13" letter-spacing="3" fill="#e8eef8">AI BUSINESS <tspan font-weight="700">HARNESS</tspan></text>
+</g>
+<text x="1144" y="588" text-anchor="end" font-size="12" letter-spacing="3" fill="#8fa0b8">HOW IT STACKS UP</text>
+</g>
+</svg>
