@@ -141,7 +141,7 @@ def post_page(p: dict, all_posts: list[dict]) -> str:
             {"@type": "BlogPosting", "headline": p["title"], "description": p["description"],
              "image": [image_object(image, width=1200, height=630, caption=p["image_alt"])], "datePublished": p["date"], "dateModified": p["date"],
              "author": {"@type": "Person", "name": AUTHOR, "url": BASE + "/"},
-             "publisher": {"@type": "Organization", "name": "AI Business Harness", "url": BASE + "/",
+             "publisher": {"@type": "Organization", "@id": BASE + "/#organization", "name": "AI Business Harness", "url": BASE + "/",
                            "parentOrganization": {"@type": "Organization", "name": "Mandile SEO", "url": "https://mandileseo.com"}},
              "mainEntityOfPage": {"@type": "WebPage", "@id": canonical},
              "keywords": p["keyword"], "articleSection": p["category"], "inLanguage": "en-US"},
