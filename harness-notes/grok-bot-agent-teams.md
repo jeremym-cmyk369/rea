@@ -13,7 +13,23 @@ xAI's Grok Bot (early beta, launched Aug 11, 2026) gives you named, always-on ag
 | 1 | Agent Org Chart | https://github.com/serenakeyitan/agent-org-chart | Real, ~125 stars | **Start here.** Ready-made teams for Marketing, Sales/SDR, Support, Engineering |
 | 2 | Grok Bot Profiles | https://github.com/HAEGONG/grok-bot-profiles | Real, ~45 stars | Strict separation of duties: Spec Writer, Bug Reproducer, PR Producer, PR Verifier (no bot approves its own work) |
 | 3 | multiBot | https://github.com/simo255/multiBot | Real, ~49 stars, new | A bot that creates other bots and hands heavy work to coding tools (Claude Code, Cursor, Codex). Wait until it's more proven |
-| 4 | PhoneZero | https://github.com/function1st/PhoneZero | Reported by Grok, not yet reviewed | Phone calls through Telnyx that only go out after you approve. Relevant to the missed-call agent offer |
+| 4 | PhoneZero | https://github.com/function1st/PhoneZero | Repo exists (checked Nov 7); code not yet reviewed | Phone calls through Telnyx that only go out after you approve. Relevant to the missed-call agent offer |
+
+## More Grok Bot team repos (exist, contents not yet reviewed)
+
+Grok suggested these. Each repo was confirmed to exist on Nov 7, 2026, but nobody has read the code yet. Review before importing.
+
+| Project | Repo | What it's said to be |
+|---------|------|----------------------|
+| awesome-grokbot | https://github.com/mergisi/awesome-grokbot | Curated profiles and team templates you can copy and paste |
+| real-world-agents | https://github.com/Ridarketh/-real-world-agents | An "org chart instead of task list" setup |
+| grokbot-agency-kit | https://github.com/DensitySystems/grokbot-agency-kit | Rules plus a lean agency org structure |
+| bot-org-os | https://github.com/firmasite/bot-org-os | A Chief bot plus specialists for each phase |
+| botteams | https://github.com/ellelion/botteams | Public directory of installable teams |
+| grok-bot-ops-graph | https://github.com/timsonner/grok-bot-ops-graph | Operations graph playbook |
+| department-grok-bot-playbook | https://github.com/ericbrianpearson/department-grok-bot-playbook | Department-style IT roster |
+
+Outside code is **not copied** into this repo on purpose. Copies would be unreviewed code with unknown licenses, they'd go stale, and this repo also holds the live site files. Import teams straight into Grok Bot from these links instead.
 
 Not confirmed: Grok Factory, BOTROSTER, HyperGrok Trading Desk, "Grok Bot Second Brain", grokbot-x, Foreman (several unrelated projects share that name). Check the real URLs behind the t.co links before using any of them.
 
