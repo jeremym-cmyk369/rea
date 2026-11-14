@@ -38,7 +38,16 @@ function renderQueue() {
   counts.reviewed.textContent = two(records.filter((r) => r.state !== 'pending').length);
 }
 renderQueue();
-document.querySelector('#reset-demo')?.addEventListener('click', () => { records = samples.map((item) => ({ ...item })); renderQueue(); });
+const evalStatus = document.querySelector('#eval-status');
+const evalButtons = [document.querySelector('#eval-approve'), document.querySelector('#eval-reject')];
+function setEvalDecision(text) {
+  if (!evalStatus) return;
+  evalStatus.textContent = text || 'Awaiting a release decision.';
+  for (const btn of evalButtons) if (btn) btn.disabled = Boolean(text);
+}
+evalButtons[0]?.addEventListener('click', () => setEvalDecision('Approved in demo. In a real engagement the tested version would now be released and the previous version kept.'));
+evalButtons[1]?.addEventListener('click', () => setEvalDecision('Rejected in demo. The current version stays in place and nothing changes.'));
+document.querySelector('#reset-demo')?.addEventListener('click', () => { records = samples.map((item) => ({ ...item })); renderQueue(); setEvalDecision(''); });
 document.querySelector('#year').textContent = String(new Date().getFullYear());
 
 const menu = document.querySelector('.menu-toggle');
