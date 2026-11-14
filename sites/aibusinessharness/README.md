@@ -23,7 +23,7 @@ The site is intentionally isolated from REA's own `website/` directory and from 
 The inquiry form opens the visitor's email program using a prefilled `mailto:` link addressed to `jeremy@mandileseo.com`. This does **not** deliver messages from the server. For reliable inbound submissions, connect a tested backend service and update the privacy disclosure before launch.
 
 ## Demonstration integrity
-The estimate-follow-up demo is entirely client-side and uses fictional records. Its approval buttons simulate a review decision only; no CRM, agent, email, or back-office integration is connected. Never describe it as production AI automation.
+The estimate-follow-up demo is entirely client-side and uses fictional records. Its approval buttons simulate a review decision only; no CRM, agent, email, or back-office integration is connected. Never describe it as production AI automation. The evaluation view inside the demo uses hypothetical numbers and must keep its visible label, "Illustrative example — not actual performance results." The site describes improvement as a managed, human-approved process; it must not claim autonomous self-improvement is operational.
 
 ## Acceptance checks
 - Responsive layout at desktop and mobile widths, accessible header/menu and controls
